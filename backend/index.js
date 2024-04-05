@@ -1,22 +1,23 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import dotenv from 'dotenv'
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-dotenv.config()
-const app = express()
+import bookRouter from "./routes/books.js";
 
-const port = process.env.PORT
-const MongoDBURL = process.env.CONNECTION_URL
+dotenv.config();
 
-app.get("/", (req, res) => {
-  console.log(req)
-  return res.status(200).send("welcome")
-})
+const app = express();
+const port = process.env.PORT;
+const MongoDBURL = process.env.CONNECTION_URL;
+
+app.use(express.json());
+
+app.use("/books", bookRouter);
 
 mongoose
   .connect(MongoDBURL)
   .then(() => {
-    console.log('mongoDB database is connected successfuly!')
+    console.log("mongoDB database is connected successfuly!");
     app.listen(port, () => {
       console.log(`server is running on port: ${port}`);
     });
