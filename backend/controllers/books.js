@@ -4,7 +4,6 @@ export const createBooks = async (req, res) => {
   try {
     const book = req.body;
     const newBook = new bookModel(book);
-
     await newBook.save();
     res.status(201).json(newBook);
   } catch (error) {
