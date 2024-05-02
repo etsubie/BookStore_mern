@@ -14,8 +14,7 @@ export const createBooks = async (req, res) => {
 
 export const fetchBooks = async (req, res) => {
   try {
-    const book = req.body;
-    const books = await bookModel.find(book);
+    const books = await bookModel.find();
     res.status(200).json({ count: books.length, data: books });
   } catch (error) {
     console.log(error);

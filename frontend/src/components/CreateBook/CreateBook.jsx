@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createBooks } from "../../actions/books";
+import "./style.css";
 
 const CreateBook = () => {
   const [formData, setFormData] = useState({
@@ -26,11 +27,12 @@ const CreateBook = () => {
   };
 
   return (
-    <div className="creat_container">
-      <button className="back">-</button>
-      <span>Create Book</span>
+    <div className="create_container">
+      <button className="back">--</button>
+      <div className="cret">Create Book</div>
       <div className="create-card">
         <form onSubmit={handleSubmit}>
+          <div className="lbl-input">
           <label>Title</label>
           <input
             value={formData.title}
@@ -39,6 +41,8 @@ const CreateBook = () => {
             }
             type="text"
           />
+          </div>
+          <div className="lbl-input">
           <label>Author</label>
           <input
             value={formData.author}
@@ -47,7 +51,9 @@ const CreateBook = () => {
             }
             type="text"
           />
-          <label>Publish Year</label>
+          </div>
+         <div className="lbl-input">
+         <label>Publish Year</label>
           <input
             value={formData.publishYear}
             onChange={(e) =>
@@ -55,6 +61,7 @@ const CreateBook = () => {
             }
             type="text"
           />
+         </div>
           <button className="create-btn">Create</button>
         </form>
       </div>

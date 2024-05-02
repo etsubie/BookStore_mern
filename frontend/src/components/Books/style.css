@@ -1,0 +1,30 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.book-container{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.none{
+    text-align: center;
+    padding: 30px;
+}
+.table-card{
+    display: flex;
+    gap: 8px;
+}
+.table-link, .card-link{
+    background-color:  rgb(124, 203, 249);
+    text-decoration: none;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
