@@ -15,7 +15,7 @@ export const createBooks = async (req, res) => {
 export const fetchBooks = async (req, res) => {
   try {
     const books = await bookModel.find();
-    res.status(200).json({ count: books.length, data: books });
+    res.status(200).json( books );
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Server Error" });
@@ -54,7 +54,7 @@ export const updateBooks = async (req, res) => {
   }
 };
 
-export const deleteBooks = async (req, res) => {
+export const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
     const deletedBook = await bookModel.findByIdAndDelete(id);

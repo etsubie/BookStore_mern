@@ -28,3 +28,36 @@
     padding: 8px 15px;
     border-radius: 4px;
 }
+tr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.numbers{
+    width: 60px;
+    text-align: center;
+}
+th,td{
+    width: 255px;
+    border: solid 1px;
+    border-radius: 7px;
+    text-align: center;
+    padding: 3px 0px;
+}
+th{
+    margin-bottom: 4px;
+}
+.list-add{
+    display: flex;
+    justify-content: space-around;
+    gap: 1000px;
+}
+tbody{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.list{
+    font-size: 22px;
+}
