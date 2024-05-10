@@ -17,9 +17,7 @@ const CreateBook = () => {
   const books = useSelector((state) => state.books);
 
   useEffect(() => {
-    // Fetch book data if editing
     if (id) {
-      // Dispatch action to fetch book data
       dispatch(fetchbook(id));
     }
   }, [id, dispatch]);
@@ -36,6 +34,7 @@ const CreateBook = () => {
 
     if (!formData.author || !formData.title || !formData.publishYear) {
       alert("Please fill in all fields");
+      return;
     }
     if (id) {
       dispatch(updatebook(id, formData));
@@ -47,12 +46,14 @@ const CreateBook = () => {
       author: "",
       publishYear: "",
     });
-    navigate("/");
+   
+    navigate(-1);
+
   };
 
   return (
     <div className="create_container">
-      <Link to="/">
+      <Link onClick={() => navigate(-1)}>
         <button className="back">
           <ArrowBackIcon />
         </button>

@@ -36,7 +36,7 @@ const Books = () => {
             <Link to="/" className="table-link">
               Table
             </Link>
-            <Link to="#" className="card-link">
+            <Link to="/cards" className="card-link">
               Card
             </Link>
           </div>
