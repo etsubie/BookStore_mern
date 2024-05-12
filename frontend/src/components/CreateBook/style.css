@@ -36,26 +36,30 @@
     font-size: 17px;
 }
 .lbl-input input{
-    height: 30px;
     border: solid 1px rgb(181, 182, 183);
-    color: gray;
-    font-size: 16px;
-    padding: 5px;
+    font-size: 15px;
+    padding: 6px;
 }
 .create-card form{
     width: 500px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 25px;
+  
     align-items: center;
     border: solid 1px rgb(124, 203, 249);
-    padding: 20px;
+    padding: 30px 15px;
     border-radius: 5px;
 }
 .create-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color:  rgb(124, 203, 249);
+   
     font-size: 16px;
     border: none;
-    height: 25px;
     width: 430px;
+    padding: 5px;
+    cursor: pointer;
 }

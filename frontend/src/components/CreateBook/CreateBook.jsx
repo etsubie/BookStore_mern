@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { createbooks, fetchbook, updatebook } from "../../actions/books";
 import "./style.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
+import BackButton from "../BackButton";
+import {useSnackbar} from 'notistack'
 
 const CreateBook = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const CreateBook = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+  const { enqueueSnackbar } = useSnackbar();
   const books = useSelector((state) => state.books);
 
   useEffect(() => {
@@ -23,7 +25,6 @@ const CreateBook = () => {
   }, [id, dispatch]);
 
   useEffect(() => {
-    // Populate form fields with fetched book data
     if (books && id) {
       setFormData(books);
     }
@@ -46,18 +47,19 @@ const CreateBook = () => {
       author: "",
       publishYear: "",
     });
-   
     navigate(-1);
+    if(id){
+      enqueueSnackbar('Book Updated successfully')
+    }else{
+      enqueueSnackbar('Book created successfully')
+
+    }
 
   };
 
   return (
     <div className="create_container">
-      <Link onClick={() => navigate(-1)}>
-        <button className="back">
-          <ArrowBackIcon />
-        </button>
-      </Link>
+     <BackButton/>
       <div className="cret">{id ? "Edit Book" : "Create Book"}</div>
       <div className="create-card">
         <form onSubmit={handleSubmit}>

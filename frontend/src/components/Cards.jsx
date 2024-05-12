@@ -1,22 +1,17 @@
-import React, { useEffect } from "react";
-import { Box, Card, Stack, Typography, styled } from "@mui/material";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-
-import AddCircleIcon from "@mui/icons-material/AddCircle"; // Added import
+import React, { useEffect, useState } from "react";
+import { Box, Card, Stack, Typography, styled, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { deletebook, fetchbooks } from "../actions/books";
-import {
-  BookOutlined,
-  DeleteOutlined,
-  EditOutlined,
-  PeopleOutlineRounded,
-} from "@mui/icons-material";
+import { BookOutlined, DeleteOutlined, EditOutlined, PeopleOutlineRounded } from "@mui/icons-material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import AddCircleIcon from "@mui/icons-material/AddCircle"; 
 
 const Cards = () => {
   const books = useSelector((state) => state.books);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [deleteConfirmation, setDeleteConfirmation] = useState(null);
 
   useEffect(() => {
     dispatch(fetchbooks());
@@ -24,6 +19,19 @@ const Cards = () => {
 
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
+  };
+
+  const handleDeleteConfirmation = (id) => {
+    setDeleteConfirmation(id);
+  };
+
+  const handleDelete = () => {
+    dispatch(deletebook(deleteConfirmation));
+    setDeleteConfirmation(null); 
+  };
+
+  const handleClose = () => {
+    setDeleteConfirmation(null);
   };
 
   const StyledBox = styled(Box)({
@@ -65,6 +73,28 @@ const Cards = () => {
               <AddCircleIcon sx={{ color: "#0d550d", fontSize: 30 }} />
             </Link>
           </Box>
+
+          {deleteConfirmation && (
+            <Dialog
+              open={true}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{"Are you sure you want to delete?"}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  This action cannot be undone.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose}>No</Button>
+                <Button onClick={handleDelete} autoFocus>
+                  Yes
+                </Button>
+              </DialogActions>
+            </Dialog>
+          )}
 
           {books.map((book) => (
             <Box key={book._id} p={2}>
@@ -110,9 +140,10 @@ const Cards = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <Stack direction="row" spacing={5}>
+                  <Stack direction="row" spacing={12}>
                     <InfoOutlinedIcon
                       sx={{ color: "GrayText", cursor: "pointer" }}
+                      onClick={() => navigate(`details/${book._id}`)}
                     />
                     <EditOutlined
                       sx={{ color: "orange", cursor: " pointer" }}
@@ -120,7 +151,7 @@ const Cards = () => {
                     />
                     <DeleteOutlined
                       sx={{ color: "orangered", cursor: "pointer" }}
-                      onClick={() => dispatch(deletebook(book._id))}
+                      onClick={() => handleDeleteConfirmation(book._id)}
                     />
                   </Stack>
                 </Box>
