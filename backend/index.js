@@ -14,10 +14,6 @@ const MongoDBURL = process.env.CONNECTION_URL;
 app.use(express.json());
 app.use(cors());
 app.use("/books", bookRouter);
-// app.get('/', (req, res) => {
-//   console.log(req);
-//   return res.status(234).send('welcome')
-// })
 
 mongoose
   .connect(MongoDBURL)
