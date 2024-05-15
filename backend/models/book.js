@@ -13,6 +13,10 @@ const bookSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    required: true
+  }
 });
 
 const bookModel = mongoose.model("book", bookSchema);

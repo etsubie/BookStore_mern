@@ -47,7 +47,7 @@ export const updateBooks = async (req, res) => {
     if (!updatedBook) {
       return res.status(404).json({ message: " Book Not Found!" });
     }
-    res.status(200).json("Book Updated Succesfuly");
+    res.status(200).json(updatedBook);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Server Error" });
