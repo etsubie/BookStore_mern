@@ -28,5 +28,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.log({message: error.message});
   });
