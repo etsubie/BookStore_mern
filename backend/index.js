@@ -8,7 +8,7 @@ import bookRouter from "./routes/books.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 const MongoDBURL = process.env.CONNECTION_URL;
 
 app.use(express.json());
