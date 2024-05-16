@@ -7,8 +7,7 @@ export const createBooks = async (req, res) => {
     await newBook.save();
     res.status(201).json(newBook);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -17,7 +16,6 @@ export const fetchBooks = async (req, res) => {
     const books = await bookModel.find();
     res.status(200).json( books );
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Server Error" });
   }
 };
@@ -31,7 +29,6 @@ export const fecthBook = async (req, res) => {
     }
     res.status(200).json(Book);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Server Error" });
   }
 };
@@ -49,7 +46,6 @@ export const updateBooks = async (req, res) => {
     }
     res.status(200).json(updatedBook);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Server Error" });
   }
 };
@@ -63,7 +59,6 @@ export const deleteBook = async (req, res) => {
     }
     res.status(200).json("Book Deleted Successfuly");
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Server Error" });
   }
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createbooks, fetchbook, updatebook } from "../../actions/books";
+import { createbook, fetchbook, updatebook } from "../../actions/books";
 import "./style.css";
 import {  useNavigate, useParams } from "react-router-dom";
 import BackButton from "../BackButton";
@@ -40,7 +40,7 @@ const CreateBook = () => {
     if (id) {
       dispatch(updatebook(id, formData));
     } else {
-      dispatch(createbooks(formData));
+      dispatch(createbook(formData));
     }
     setFormData({
       title: "",
