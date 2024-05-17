@@ -13,10 +13,6 @@
     gap: 20px;
 }
 
-.none{
-    text-align: center;
-    padding: 30px;
-}
 .table-card{
     display: flex;
     gap: 8px;

@@ -6,6 +6,7 @@ import "./style.css";
 import { DeleteOutlined, EditOutlined, InfoOutlined } from "@mui/icons-material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack } from "@mui/material";
+import Nobook from "../Nobook";
 
 const Books = () => {
   const books = useSelector((state) => state.books);
@@ -37,12 +38,7 @@ const Books = () => {
   return (
     <>
       {!books.length ? (
-        <p className="none">
-          No Books
-          <Link to="/create" className="create">
-            <AddCircleIcon sx={{ color: "#0d550d", fontSize: 30 }} />
-          </Link>
-        </p>
+       <Nobook/>
       ) : (
         <div className="book-container">
           <div className="table-card">

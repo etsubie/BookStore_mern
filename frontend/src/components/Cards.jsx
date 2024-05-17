@@ -6,6 +6,7 @@ import { deletebook, fetchbooks } from "../actions/books";
 import { BookOutlined, DeleteOutlined, EditOutlined, PeopleOutlineRounded } from "@mui/icons-material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import AddCircleIcon from "@mui/icons-material/AddCircle"; 
+import Nobook from "./Nobook";
 
 const Cards = () => {
   const books = useSelector((state) => state.books);
@@ -51,12 +52,7 @@ const Cards = () => {
   return (
     <>
       {!books.length ? (
-        <p className="none">
-          No Books
-          <Link to="/create" className="create">
-            <AddCircleIcon sx={{ color: "#0d550d", fontSize: 30 }} />
-          </Link>
-        </p>
+       <Nobook/>
       ) : (
         <StyledBox>
           <Box className="table-card">
