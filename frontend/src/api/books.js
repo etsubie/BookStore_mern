@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://bookstore-d3sv.onrender.com/" });
+const API = axios.create({ baseURL: "http://bookstore-d3sv.onrender.com/" });
 
 export const createBook = (book) => API.post("/create", book);
 export const fetchBooks = () => API.get("/");
