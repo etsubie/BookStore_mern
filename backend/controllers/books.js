@@ -16,7 +16,7 @@ export const fetchBooks = async (req, res) => {
     const books = await bookModel.find();
     res.status(200).json( books );
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({ message: error.message });
   }
 };
 

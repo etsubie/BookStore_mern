@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createbook, fetchbook, updatebook } from "../../actions/books";
+import { createbook, fetchbooks, updatebook } from "../../actions/books";
 import "./style.css";
 import {  useNavigate, useParams } from "react-router-dom";
 import BackButton from "../BackButton";
@@ -16,19 +16,19 @@ const CreateBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
-  const books = useSelector((state) => state.books);
+  const book = useSelector((state) => state.books.find((book) => book._id === id));
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchbook(id));
+      dispatch(fetchbooks());
     }
   }, [id, dispatch]);
 
   useEffect(() => {
-    if (books && id) {
-      setFormData(books);
+    if (book && id) {
+      setFormData(book);
     }
-  }, [books, id]);
+  }, [book, id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

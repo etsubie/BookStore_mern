@@ -99,7 +99,7 @@ const Books = () => {
                     <Stack direction="row" justifyContent="center" gap={2}>
                       <InfoOutlined
                         sx={{ fontSize: 20, color: "GrayText", cursor: "pointer" }}
-                        onClick={() => navigate(`details/${book._id}`)}
+                        onClick={() => navigate(`/${book._id}`)}
                       />
                       <EditOutlined
                         sx={{ fontSize: 20, color: "orange", cursor: "pointer" }}

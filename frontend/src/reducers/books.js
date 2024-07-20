@@ -4,8 +4,6 @@ export const books = (state = [], action) => {
       return [...state, action.payload];
     case "FETCH_ALL":
       return action.payload;
-    case "FETCH_BY_ID":
-      return state.find((book) => book._id === action.payload._id) || null;
     case "DELETE":
       return state.filter((book) => book._id !== action.payload);
     case "UPDATE":

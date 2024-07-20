@@ -13,6 +13,14 @@ const bookSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: new Date()
+  },
+  updatedAt: {
+    type: Date,
+    default: new Date()
+  }
  
 });
 

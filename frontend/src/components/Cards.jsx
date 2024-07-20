@@ -55,7 +55,8 @@ const Cards = () => {
        <Nobook/>
       ) : (
         <StyledBox>
-          <Box className="table-card">
+         <Stack direction="column">
+         <Box className="table-card" sx={{display: "flex", justifyContent: "center", alignItems: 'center'}}>
             <Link to="/" className="table-link">
               Table
             </Link>
@@ -63,12 +64,13 @@ const Cards = () => {
               Card
             </Link>
           </Box>
-          <Box className="list-add">
+          <Box className="list-add" sx={{marginTop: 3 ,marginBottom:3}}>
             <span className="list">Books List</span>
             <Link to="/create">
               <AddCircleIcon sx={{ color: "#0d550d", fontSize: 30 }} />
             </Link>
           </Box>
+         </Stack>
 
           {deleteConfirmation && (
             <Dialog
@@ -139,7 +141,7 @@ const Cards = () => {
                   <Stack direction="row" spacing={12}>
                     <InfoOutlinedIcon
                       sx={{ color: "GrayText", cursor: "pointer" }}
-                      onClick={() => navigate(`details/${book._id}`)}
+                      onClick={() => navigate(`/${book._id}`)}
                     />
                     <EditOutlined
                       sx={{ color: "orange", cursor: " pointer" }}
